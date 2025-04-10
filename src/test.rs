@@ -1,5 +1,7 @@
+use crate::DynamicLinkedList;
+
 #[test]
 
 fn test_dynamic_linked_list_operations() {
-    todo!("not implemented")
+    let mut list = DynamicLinkedList::new() as DynamicLinkedList<i32>;
 }

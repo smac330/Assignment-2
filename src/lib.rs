@@ -25,6 +25,24 @@ impl<T: PartialEq + Clone> DynamicLinkedList<T> {
         *curr = Some(new_node);
     }
 
+    pub fn insert_at_index(&mut self, index: usize, data: T) {
+        if index == 0 {
+            let new_node = Box::new(Node {
+                data,
+                next: self.head.take(),
+            });
+            self.head = Some(new_node);
+            return;
+        }
+
+        let mut curr = &mut self.head;
+        for _ in 0..index - 1 {
+            match curr {
+                Some(node) => curr = &mut node.next,
+                None => return, // index out of bounds
+            }
+        }
+    }
 }
 
 mod test; 

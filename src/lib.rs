@@ -307,6 +307,7 @@ impl<T: Clone + PartialEq + Default> StaticLinkedList<T> {
     /// Description: gets the element at a specific index.
     /// Parameters: index
     ///Returns: Some(data) if the element exists, otherwise none.
+    /// test
     pub fn get(&self, index: usize) -> Option<T> {
         let mut curr = self.head;
 

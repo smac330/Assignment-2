@@ -1,7 +1,6 @@
 use crate::DynamicLinkedList;
 
 #[test]
-
 fn test_dynamic_linked_list_operations() {
     let mut list = DynamicLinkedList::new() as DynamicLinkedList<i32>;
 
@@ -9,4 +8,9 @@ fn test_dynamic_linked_list_operations() {
     list.insert(20);
     list.insert(30);
 
+}
+
+#[test]
+fn test_static_linked_list() {
+    todo!("not implemented")
 }

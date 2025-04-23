@@ -60,6 +60,10 @@ impl<T: PartialEq + Clone> DynamicLinkedList<T> {
         }
     }
 
+
+    /// Description: deletes the first node that matches the given data.
+    /// Parameters: data
+    /// Returns: true if the element was found and deleted, otherwise false.
     pub fn delete_element(&mut self, data: T) -> bool {
         let mut curr = &mut self.head;
 

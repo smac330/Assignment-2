@@ -169,7 +169,21 @@ impl<T: Clone + PartialEq + Default> StaticLinkedList<T> {
     }
 
     pub fn delete_element(&mut self, data: T) -> bool {
-        todo!("not implemented");
+        let mut curr = &mut self.head;
+
+        while let Some(idx) = *curr {
+            if self.nodes[idx].data.as_ref() == Some(&data) {
+                curr = &mut self.nodes[idx].next;
+                self.nodes[idx] = StaticNode {
+                    data: None,
+                    next: None,
+                };
+                self.free.push(idx);
+                return true;
+            }
+            curr = &mut self.nodes[idx].next;
+        }
+        false
     }
 }
 

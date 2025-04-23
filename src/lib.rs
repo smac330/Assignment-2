@@ -31,6 +31,8 @@ impl<T: PartialEq + Clone> DynamicLinkedList<T> {
         *curr = Some(new_node);
     }
 
+    /// Description: inserts an element at the specified index.
+    /// Parameters: index, data
     pub fn insert_at_index(&mut self, index: usize, data: T) {
         if index == 0 {
             let new_node = Box::new(Node {

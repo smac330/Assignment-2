@@ -288,6 +288,9 @@ impl<T: Clone + PartialEq + Default> StaticLinkedList<T> {
         false
     }
 
+    /// Description: searches for an element matching `data`.
+    /// Parameters: data
+    /// Returns: true if the element was found, otherwise false.
     pub fn find(&self, data: T) -> bool {
         let mut curr = self.head;
 
@@ -301,6 +304,9 @@ impl<T: Clone + PartialEq + Default> StaticLinkedList<T> {
         false
     }
 
+    /// Description: gets the element at a specific index.
+    /// Parameters: index
+    ///Returns: Some(data) if the element exists, otherwise none.
     pub fn get(&self, index: usize) -> Option<T> {
         let mut curr = self.head;
 

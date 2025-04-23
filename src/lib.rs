@@ -15,7 +15,7 @@ impl<T: PartialEq + Clone> DynamicLinkedList<T> {
     }
 
     pub fn insert(&mut self, data: T) {
-        let mut new_node = Box::new(Node { data, next: None });
+        let new_node = Box::new(Node { data, next: None });
         let mut curr = &mut self.head;
 
         while let Some(node) = curr {
@@ -39,12 +39,45 @@ impl<T: PartialEq + Clone> DynamicLinkedList<T> {
         for _ in 0..index - 1 {
             match curr {
                 Some(node) => curr = &mut node.next,
-                None => return, // index out of bounds
+                None => return,
             }
+        }
+
+        if let Some(node) = curr {
+            let new_node = Box::new(Node {
+                data,
+                next: node.next.take(),
+            });
+            node.next = Some(new_node);
         }
     }
 
-    
+    pub fn delete_element(&mut self, data: T) -> bool {
+        let mut curr = &mut self.head;
+
+        while let Some(node) = curr {
+            if node.data == data {
+                let next = node.next.take();
+                let mut next = node.next.take();
+                curr = &mut next;
+                return true;
+            }
+            curr = &mut node.next;
+        }
+
+        false
+    }
+
+    pub fn to_vec(&self) -> Vec<T> {
+        let mut result = Vec::new();
+        let mut current = &self.head;
+        while let Some(node) = current {
+            result.push(node.data.clone());
+            current = &node.next;
+        }
+        result
+    }
 }
 
-mod test; 
+#[cfg(test)]
+mod test;

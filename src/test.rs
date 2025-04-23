@@ -8,6 +8,5 @@ fn test_dynamic_linked_list_operations() {
     list.insert(10);
     list.insert(20);
     list.insert(30);
-    
-    
+
 }

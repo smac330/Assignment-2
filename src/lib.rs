@@ -1,3 +1,5 @@
+const MAX_SIZE: usize = 100;
+
 #[derive(Debug)]
 struct Node<T> {
     data: T,
@@ -82,6 +84,13 @@ impl<T: PartialEq + Clone> DynamicLinkedList<T> {
 struct StaticNode<T: Clone + PartialEq> {
     data: Option<T>,
     next: Option<usize>,
+}
+
+#[derive(Debug)]
+pub struct StaticLinkedList<T: Clone + PartialEq> {
+    nodes: [StaticNode<T>; MAX_SIZE],
+    head: Option<usize>,
+    free: Vec<usize>,
 }
 
 #[cfg(test)]

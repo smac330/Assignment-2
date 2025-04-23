@@ -239,8 +239,11 @@ impl<T: Clone + PartialEq + Default> StaticLinkedList<T> {
             }
             curr = self.nodes[idx].next;
         }
-
         false
+    }
+
+    pub fn update_element_at_index(&mut self, index: usize, data: T) -> bool {
+        todo!("not implemented")
     }
 }
 

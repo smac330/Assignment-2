@@ -228,7 +228,19 @@ impl<T: Clone + PartialEq + Default> StaticLinkedList<T> {
     }
 
     pub fn update_element(&mut self, old_data: T, new_data: T) -> bool {
-        todo!("not implemented")
+        let mut curr = self.head;
+
+        while let Some(idx) = curr {
+            if let Some(ref val) = self.nodes[idx].data {
+                if *val == old_data {
+                    self.nodes[idx].data = Some(new_data);
+                    return true;
+                }
+            }
+            curr = self.nodes[idx].next;
+        }
+
+        false
     }
 }
 

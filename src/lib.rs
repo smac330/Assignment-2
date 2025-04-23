@@ -145,6 +145,8 @@ impl<T: Clone + PartialEq + Default> StaticLinkedList<T> {
         }
     }
 
+    /// Description: inserts an element at the given index.
+    /// Parameters: index, data
     pub fn insert_at_index(&mut self, index: usize, data: T) {
         if self.free.is_empty() {
             return;

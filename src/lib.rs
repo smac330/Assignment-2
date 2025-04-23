@@ -243,7 +243,21 @@ impl<T: Clone + PartialEq + Default> StaticLinkedList<T> {
     }
 
     pub fn update_element_at_index(&mut self, index: usize, data: T) -> bool {
-        todo!("not implemented")
+        let mut curr = self.head;
+
+        for _ in 0..index {
+            match curr {
+                Some(i) => curr = self.nodes[i].next,
+                None => return false,
+            }
+        }
+
+        if let Some(i) = curr {
+            self.nodes[i].data = Some(data);
+            return true;
+        }
+
+        false
     }
 }
 

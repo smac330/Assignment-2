@@ -95,7 +95,19 @@ pub struct StaticLinkedList<T: Clone + PartialEq> {
 
 impl<T: Clone + PartialEq + Default> StaticLinkedList<T> {
     pub fn new() -> Self {
-        todo!("not implemeted")
+        let mut free = Vec::with_capacity(MAX_SIZE);
+        for i in (0..MAX_SIZE).rev() {
+            free.push(i);
+        }
+
+        Self {
+            nodes: array_init::array_init(|_| StaticNode {
+                data: None,
+                next: None,
+            }),
+            head: None,
+            free,
+        }
     }
 }
 

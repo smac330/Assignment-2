@@ -249,6 +249,9 @@ impl<T: Clone + PartialEq + Default> StaticLinkedList<T> {
         true
     }
 
+    /// Description: updates the first node matching `old_data` with `new_data`.
+    ///Parameters: old_data, new_data
+    /// Returns: true if the update was successful, otherwise false.
     pub fn update_element(&mut self, old_data: T, new_data: T) -> bool {
         let mut curr = self.head;
 
@@ -264,6 +267,9 @@ impl<T: Clone + PartialEq + Default> StaticLinkedList<T> {
         false
     }
 
+    /// Description: updates the element at the given index with new data.
+    /// Parameters: index, 
+    /// Returns: true if the element was updated, otherwise false.
     pub fn update_element_at_index(&mut self, index: usize, data: T) -> bool {
         let mut curr = self.head;
 

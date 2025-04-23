@@ -184,6 +184,9 @@ impl<T: Clone + PartialEq + Default> StaticLinkedList<T> {
 
     }
 
+    /// Description: deletes the first occurrence of the given element.
+    /// Parameters: data
+    /// Returns: true if the element was found and deleted, otherwise false.
     pub fn delete_element(&mut self, data: T) -> bool {
         let mut curr = &mut self.head;
 
@@ -202,6 +205,9 @@ impl<T: Clone + PartialEq + Default> StaticLinkedList<T> {
         false
     }
 
+    /// Description: deletes the node at the specified index.
+    ///Parameters: index
+    /// Returns: true if the node was successfully deleted, otherwise false.
     pub fn delete_at_index(&mut self, index: usize) -> bool {
         if index == 0 {
             if let Some(i) = self.head {

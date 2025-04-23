@@ -93,5 +93,11 @@ pub struct StaticLinkedList<T: Clone + PartialEq> {
     free: Vec<usize>,
 }
 
+impl<T: Clone + PartialEq + Default> StaticLinkedList<T> {
+    pub fn new() -> Self {
+        todo!("not implemeted")
+    }
+}
+
 #[cfg(test)]
 mod test;

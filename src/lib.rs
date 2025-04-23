@@ -274,7 +274,19 @@ impl<T: Clone + PartialEq + Default> StaticLinkedList<T> {
     }
 
     pub fn get(&self, index: usize) -> Option<T> {
-        todo!("not implemented")
+        let mut curr = self.head;
+
+        for _ in 0..index {
+            match curr {
+                Some(i) => curr = self.nodes[i].next,
+                None => return None,
+            }
+        }
+
+        match curr {
+            Some(i) => self.nodes[i].data.clone(),
+            None => None,
+        }
     }
 
 }

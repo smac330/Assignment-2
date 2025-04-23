@@ -167,6 +167,10 @@ impl<T: Clone + PartialEq + Default> StaticLinkedList<T> {
         }
 
     }
+
+    pub fn delete_element(&mut self, data: T) -> bool {
+        todo!("not implemented");
+    }
 }
 
 #[cfg(test)]

@@ -111,7 +111,24 @@ impl<T: Clone + PartialEq + Default> StaticLinkedList<T> {
     }
 
     pub fn insert(&mut self, data: T) {
-        todo!("not implemented")
+        if let Some(new_idx) = self.free.pop() {
+            self.nodes[new_idx] = StaticNode {
+                data: Some(data),
+                next: None,
+            };
+
+            match self.head {
+                None => {
+                    self.head = Some(new_idx);
+                }
+                Some(mut idx) => {
+                    while let Some(next_idx) = self.nodes[idx].next {
+                        idx = next_idx;
+                    }
+                    self.nodes[idx].next = Some(new_idx);
+                }
+            }
+        }
     }
 }
 

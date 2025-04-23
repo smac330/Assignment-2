@@ -104,6 +104,8 @@ pub struct StaticLinkedList<T: Clone + PartialEq> {
 }
 
 impl<T: Clone + PartialEq + Default> StaticLinkedList<T> {
+    /// Description: creates a new empty static linked list.
+    /// Returns: a new instance of StaticLinkedList.
     pub fn new() -> Self {
         let mut free = Vec::with_capacity(MAX_SIZE);
         for i in (0..MAX_SIZE).rev() {
@@ -120,6 +122,8 @@ impl<T: Clone + PartialEq + Default> StaticLinkedList<T> {
         }
     }
 
+    /// Description: appends a new element to the end of the static list.
+    /// Parameters: data
     pub fn insert(&mut self, data: T) {
         if let Some(new_idx) = self.free.pop() {
             self.nodes[new_idx] = StaticNode {

@@ -227,6 +227,9 @@ impl<T: Clone + PartialEq + Default> StaticLinkedList<T> {
         true
     }
 
+    pub fn update_element(&mut self, old_data: T, new_data: T) -> bool {
+        todo!("not implemented")
+    }
 }
 
 #[cfg(test)]

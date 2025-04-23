@@ -132,7 +132,40 @@ impl<T: Clone + PartialEq + Default> StaticLinkedList<T> {
     }
 
     pub fn insert_at_index(&mut self, index: usize, data: T) {
-        todo!("not implemented");
+        if self.free.is_empty() {
+            return;
+        }
+
+        let new_idx = self.free.pop().unwrap();
+        self.nodes[new_idx] = StaticNode {
+            data: Some(data),
+            next: None,
+        };
+
+        if index == 0 {
+            self.nodes[new_idx].next = self.head;
+            self.head = Some(new_idx);
+            return;
+        }
+
+        let mut curr = self.head;
+        for _ in 0..index - 1 {
+            match curr {
+                Some(i) => curr = self.nodes[i].next,
+                None => {
+                    self.free.push(new_idx);
+                    return;
+                }
+            }
+        }
+
+        if let Some(i) = curr {
+            self.nodes[new_idx].next = self.nodes[i].next;
+            self.nodes[i].next = Some(new_idx);
+        } else {
+            self.free.push(new_idx);
+        }
+
     }
 }
 

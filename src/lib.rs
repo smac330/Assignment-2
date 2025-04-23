@@ -272,6 +272,11 @@ impl<T: Clone + PartialEq + Default> StaticLinkedList<T> {
 
         false
     }
+
+    pub fn get(&self, index: usize) -> Option<T> {
+        todo!("not implemented")
+    }
+
 }
 
 #[cfg(test)]

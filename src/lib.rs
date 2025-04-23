@@ -187,7 +187,44 @@ impl<T: Clone + PartialEq + Default> StaticLinkedList<T> {
     }
 
     pub fn delete_at_index(&mut self, index: usize) -> bool {
-        todo!("not implemented")
+        if index == 0 {
+            if let Some(i) = self.head {
+                let next = self.nodes[i].next;
+                self.nodes[i].data = None;
+                self.nodes[i].next = None;
+                self.free.push(i);
+                self.head = next;
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        let mut current = self.head;
+        for _ in 0..index - 1 {
+            match current {
+                Some(i) => current = self.nodes[i].next,
+                None => return false,
+            }
+        }
+
+        let prev_idx = match current {
+            Some(i) => i,
+            None => return false,
+        };
+
+        let target_idx = match self.nodes[prev_idx].next {
+            Some(i) => i,
+            None => return false, 
+        };
+
+        let next = self.nodes[target_idx].next;
+
+        self.nodes[target_idx].data = None;
+        self.nodes[target_idx].next = None;
+        self.nodes[prev_idx].next = next;
+        self.free.push(target_idx);
+        true
     }
 
 }

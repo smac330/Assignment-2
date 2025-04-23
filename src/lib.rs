@@ -109,6 +109,10 @@ impl<T: Clone + PartialEq + Default> StaticLinkedList<T> {
             free,
         }
     }
+
+    pub fn insert(&mut self, data: T) {
+        todo!("not implemented")
+    }
 }
 
 #[cfg(test)]

@@ -259,6 +259,10 @@ impl<T: Clone + PartialEq + Default> StaticLinkedList<T> {
 
         false
     }
+
+    pub fn find(&self, data: T) -> bool {
+        todo!("not implemented")
+    }
 }
 
 #[cfg(test)]

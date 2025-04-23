@@ -64,7 +64,6 @@ impl<T: PartialEq + Clone> DynamicLinkedList<T> {
             }
             curr = &mut node.next;
         }
-
         false
     }
 
@@ -77,6 +76,12 @@ impl<T: PartialEq + Clone> DynamicLinkedList<T> {
         }
         result
     }
+}
+
+#[derive(Clone, Debug)]
+struct StaticNode<T: Clone + PartialEq> {
+    data: Option<T>,
+    next: Option<usize>,
 }
 
 #[cfg(test)]

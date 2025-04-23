@@ -12,10 +12,14 @@ pub struct DynamicLinkedList<T> {
 }
 
 impl<T: PartialEq + Clone> DynamicLinkedList<T> {
+    /// Description: creates a new, empty linked list.
+    /// Returns: a new instance of DynamicLinkedList.
     pub fn new() -> Self {
         Self { head: None }
     }
 
+    /// Description: appends a new element to the end of the list.
+    /// Parameters: data 
     pub fn insert(&mut self, data: T) {
         let new_node = Box::new(Node { data, next: None });
         let mut curr = &mut self.head;
